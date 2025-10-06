@@ -12,7 +12,7 @@ public class CreditAnalysisService {
     private CreditRisk creditRisk;
 
     public CreditResponseDTO getCreditStudyResponse(CreditRequestDTO request){
-        
+
     }
 
 }
