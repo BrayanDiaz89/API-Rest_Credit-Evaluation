@@ -14,19 +14,18 @@ public class CreditAnalysisService {
         if(request.age() < 21 && request.typeOfLoan() == TypeOfLoan.EDUCATIONAL_LOAN) {
             return new CreditResponseDTO(request.name(), request.email(), request.phone(), false, CreditRisk.HIGH_RISK,
                     getMaxEligibleAmount(request.typeOfLoan(), request.creditHistoryScore()), CreditRecomendationUtil.REQUIRED_CODEUDOR);
+        } else if(request.age() < 21){
+            return new CreditResponseDTO(request.name(), request.email(), request.phone(), false, CreditRisk.HIGH_RISK,
+                                        getMaxEligibleAmount(request.typeOfLoan(), request.creditHistoryScore()), CreditRecomendationUtil.APPROVED_FALSE_BY_AGE);
         } else if(request.creditHistoryScore() < 500) {
             return new CreditResponseDTO(request.name(), request.email(), request.phone(), false, CreditRisk.HIGH_RISK,
                     getMaxEligibleAmount(request.typeOfLoan(), request.creditHistoryScore()), CreditRecomendationUtil.APPROVED_FALSE_BY_SCORE_HISTORY);
         } else if(request.creditHistoryScore() < 700) {
             return new CreditResponseDTO(request.name(), request.email(), request.phone(), true, CreditRisk.MEDIUM_RISK,
                                         getMaxEligibleAmount(request.typeOfLoan(), request.creditHistoryScore()), CreditRecomendationUtil.APPROVED_TRUE_MEDIUM_RISK);
-        } else if(request.creditHistoryScore() > 700){
-            return new CreditResponseDTO(request.name(), request.email(), request.phone(), true, CreditRisk.LOW_RISK,
-                                        getMaxEligibleAmount(request.typeOfLoan(), request.creditHistoryScore()), CreditRecomendationUtil.APPROVED_TRUE_LOW_RISK);
-        }else {
-            return new CreditResponseDTO(request.name(), request.email(), request.phone(), false, CreditRisk.HIGH_RISK,
-                    getMaxEligibleAmount(request.typeOfLoan(), request.creditHistoryScore()), CreditRecomendationUtil.APPROVED_FALSE_BY_AGE);
         }
+        return new CreditResponseDTO(request.name(), request.email(), request.phone(), true, CreditRisk.LOW_RISK,
+                                        getMaxEligibleAmount(request.typeOfLoan(), request.creditHistoryScore()), CreditRecomendationUtil.APPROVED_TRUE_LOW_RISK);
     }
 
     public Integer getMaxEligibleAmount(TypeOfLoan typeOfLoan, Integer creditHistoryScore){
