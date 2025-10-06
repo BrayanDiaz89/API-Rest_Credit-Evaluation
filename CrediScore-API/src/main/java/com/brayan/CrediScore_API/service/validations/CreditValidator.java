@@ -1,7 +1,8 @@
 package com.brayan.CrediScore_API.service.validations;
 
 import com.brayan.CrediScore_API.model.dto.CreditRequestDTO;
+import com.brayan.CrediScore_API.model.enums.TypeOfLoan;
 
 public interface CreditValidator {
-    void validate(CreditRequestDTO creditRequestDTO);
+    TypeOfLoan validate(CreditRequestDTO creditRequestDTO);
 }
