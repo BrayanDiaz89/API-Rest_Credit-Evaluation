@@ -27,9 +27,9 @@ public class ErrorHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<DataErrorValidationDTO> handleErrorOfValidationEnum(HttpMessageNotReadableException e){
-        var exception = new ValidationException("typeOfLoan. You must enter a valid loan type.", e.getCause());
+        var exceptionResponse = new DataErrorValidationDTO("typeOfLoan. You must enter a valid loan type.", e.getCause().toString());
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
-                .body(new DataErrorValidationDTO(exception.getMessage(), exception.getCause().toString()));
+                .body(exceptionResponse);
     }
 }
