@@ -8,7 +8,7 @@ import com.brayan.CrediScore_API.util.CreditRecomendationUtil;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MinorAge21Rule implements ICreditRule{
+public class Under21Rule implements ICreditRule{
     public boolean appliesTo(CreditRequestDTO request) {
         return request.age() < 21;
     }

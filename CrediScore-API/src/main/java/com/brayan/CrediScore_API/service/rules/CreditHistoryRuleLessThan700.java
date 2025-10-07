@@ -8,10 +8,10 @@ import com.brayan.CrediScore_API.util.CreditRecomendationUtil;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MinorCreditHistory500Rule implements ICreditRule{
+public class CreditHistoryRuleLessThan700 implements ICreditRule{
 
     public boolean appliesTo(CreditRequestDTO request){
-        return request.creditHistoryScore() < 500;
+        return request.creditHistoryScore() < 700;
     }
 
     public CreditResponseDTO evaluate(CreditRequestDTO request){
@@ -19,10 +19,10 @@ public class MinorCreditHistory500Rule implements ICreditRule{
                 request.name(),
                 request.email(),
                 request.phone(),
-                false,
-                CreditRisk.HIGH_RISK,
+                true,
+                CreditRisk.MEDIUM_RISK,
                 CreditMaxEligibleAmount.getMaxEligibleAmount(request.typeOfLoan(), request.creditHistoryScore()),
-                CreditRecomendationUtil.APPROVED_FALSE_BY_SCORE_HISTORY
+                CreditRecomendationUtil.APPROVED_TRUE_MEDIUM_RISK
         );
     }
 
