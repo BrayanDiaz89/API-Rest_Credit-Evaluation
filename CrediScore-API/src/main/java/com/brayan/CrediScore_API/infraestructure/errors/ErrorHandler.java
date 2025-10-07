@@ -2,10 +2,7 @@ package com.brayan.CrediScore_API.infraestructure.errors;
 
 import com.brayan.CrediScore_API.infraestructure.errors.dto.DataErrorValidationDTO;
 import com.brayan.CrediScore_API.model.enums.TypeOfLoan;
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
-import com.fasterxml.jackson.databind.exc.MismatchedInputException;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -13,7 +10,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.Arrays;
-import java.util.InputMismatchException;
 import java.util.stream.Collectors;
 
 @RestControllerAdvice

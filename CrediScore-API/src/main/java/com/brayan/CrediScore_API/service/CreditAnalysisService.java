@@ -3,12 +3,9 @@ package com.brayan.CrediScore_API.service;
 import com.brayan.CrediScore_API.model.dto.CreditRequestDTO;
 import com.brayan.CrediScore_API.model.dto.CreditResponseDTO;
 import com.brayan.CrediScore_API.model.enums.CreditRisk;
-import com.brayan.CrediScore_API.model.enums.TypeOfLoan;
 import com.brayan.CrediScore_API.service.rules.ICreditRule;
 import com.brayan.CrediScore_API.util.CreditMaxEligibleAmount;
 import com.brayan.CrediScore_API.util.CreditRecomendationUtil;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,6 @@
 package com.brayan.CrediScore_API.model.dto;
 
 import com.brayan.CrediScore_API.model.enums.TypeOfLoan;
-import jakarta.validation.Constraint;
 import jakarta.validation.constraints.*;
 
 public record CreditRequestDTO(
