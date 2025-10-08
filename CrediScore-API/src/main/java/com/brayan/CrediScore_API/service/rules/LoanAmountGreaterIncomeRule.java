@@ -3,15 +3,18 @@ package com.brayan.CrediScore_API.service.rules;
 import com.brayan.CrediScore_API.model.dto.CreditRequestDTO;
 import com.brayan.CrediScore_API.model.dto.CreditResponseDTO;
 import com.brayan.CrediScore_API.model.enums.CreditRisk;
+import com.brayan.CrediScore_API.model.enums.TypeOfLoan;
 import com.brayan.CrediScore_API.util.CreditMaxEligibleAmount;
 import com.brayan.CrediScore_API.util.CreditRecomendationUtil;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CreditHistoryRuleLessThan700 implements ICreditRule{
+public class LoanAmountGreaterIncomeRule implements ICreditRule{
 
     public boolean appliesTo(CreditRequestDTO request){
-        return request.creditHistoryScore() < 700;
+        return (request.typeOfLoan() == TypeOfLoan.FREE_INVESTMENT_LOAN ||
+                request.typeOfLoan() == TypeOfLoan.MORTGAGE_LOAN)
+                && (request.loanAmount() > (request.income() * 10));
     }
 
     public CreditResponseDTO evaluate(CreditRequestDTO request){
@@ -19,10 +22,10 @@ public class CreditHistoryRuleLessThan700 implements ICreditRule{
                 request.name(),
                 request.email(),
                 request.phone(),
-                true,
-                CreditRisk.MEDIUM_RISK,
+                false,
+                CreditRisk.HIGH_RISK,
                 CreditMaxEligibleAmount.getMaxEligibleAmount(request),
-                CreditRecomendationUtil.APPROVED_TRUE_MEDIUM_RISK
+                CreditRecomendationUtil.APPROVED_FALSE_BY_LOAN_AMOUNT
         );
     }
 

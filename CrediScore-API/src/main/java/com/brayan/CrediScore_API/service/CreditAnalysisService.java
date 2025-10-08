@@ -36,7 +36,7 @@ public class CreditAnalysisService {
                 request.phone(),
                 true,
                 CreditRisk.LOW_RISK,
-                CreditMaxEligibleAmount.getMaxEligibleAmount(request.typeOfLoan(), request.creditHistoryScore()),
+                CreditMaxEligibleAmount.getMaxEligibleAmount(request),
                 CreditRecomendationUtil.APPROVED_TRUE_LOW_RISK
         );
     }

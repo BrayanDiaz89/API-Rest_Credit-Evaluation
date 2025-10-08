@@ -20,7 +20,7 @@ public class Under21Rule implements ICreditRule{
                 request.phone(),
                 false,
                 CreditRisk.HIGH_RISK,
-                CreditMaxEligibleAmount.getMaxEligibleAmount(request.typeOfLoan(), request.creditHistoryScore()),
+                CreditMaxEligibleAmount.getMaxEligibleAmount(request),
                 CreditRecomendationUtil.APPROVED_FALSE_BY_AGE
         );
     }

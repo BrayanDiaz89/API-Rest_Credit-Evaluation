@@ -22,7 +22,7 @@ public class AgeEducationalLoanRule implements ICreditRule{
                 request.phone(),
                 false,
                 CreditRisk.HIGH_RISK,
-                CreditMaxEligibleAmount.getMaxEligibleAmount(request.typeOfLoan(), request.creditHistoryScore()),
+                CreditMaxEligibleAmount.getMaxEligibleAmount(request),
                 CreditRecomendationUtil.REQUIRED_CODEUDOR
         );
     }

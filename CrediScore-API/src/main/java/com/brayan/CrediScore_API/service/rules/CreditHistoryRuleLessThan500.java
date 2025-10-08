@@ -21,7 +21,7 @@ public class CreditHistoryRuleLessThan500 implements ICreditRule{
                 request.phone(),
                 false,
                 CreditRisk.HIGH_RISK,
-                CreditMaxEligibleAmount.getMaxEligibleAmount(request.typeOfLoan(), request.creditHistoryScore()),
+                CreditMaxEligibleAmount.getMaxEligibleAmount(request),
                 CreditRecomendationUtil.APPROVED_FALSE_BY_SCORE_HISTORY
         );
     }
