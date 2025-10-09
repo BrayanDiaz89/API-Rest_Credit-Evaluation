@@ -9,7 +9,7 @@ import com.brayan.CrediScore_API.util.CreditRecomendationUtil;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LoanAmountGreaterIncomeRule implements ICreditRule{
+public class LoanAmountGreaterIncomeRule implements ICreditRule {
 
     public boolean appliesTo(CreditRequestDTO request){
         return (request.typeOfLoan() == TypeOfLoan.FREE_INVESTMENT_LOAN ||

@@ -9,7 +9,7 @@ import com.brayan.CrediScore_API.util.CreditRecomendationUtil;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AgeEducationalLoanRule implements ICreditRule{
+public class AgeEducationalLoanRule implements ICreditRule {
 
     public boolean appliesTo(CreditRequestDTO request) {
         return request.age() < 21 && request.typeOfLoan() == TypeOfLoan.EDUCATIONAL_LOAN;

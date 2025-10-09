@@ -9,7 +9,7 @@ import com.brayan.CrediScore_API.util.CreditRecomendationUtil;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MortgageLoanWithUnrealisticTermRule implements ICreditRule{
+public class MortgageLoanWithUnrealisticTermRule implements ICreditRule {
 
     public boolean appliesTo(CreditRequestDTO request){
         return (request.typeOfLoan() == TypeOfLoan.MORTGAGE_LOAN) && (request.loanTermMonths() < 60);

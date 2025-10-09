@@ -8,7 +8,7 @@ import com.brayan.CrediScore_API.util.CreditRecomendationUtil;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CreditHistoryRuleLessThan700 implements ICreditRule{
+public class CreditHistoryRuleLessThan700 implements ICreditRule {
 
     public boolean appliesTo(CreditRequestDTO request){
         return request.creditHistoryScore() < 700;

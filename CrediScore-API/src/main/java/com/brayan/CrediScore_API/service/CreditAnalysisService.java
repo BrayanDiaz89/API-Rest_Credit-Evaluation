@@ -9,6 +9,7 @@ import com.brayan.CrediScore_API.util.CreditRecomendationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -24,8 +25,9 @@ public class CreditAnalysisService {
     public CreditResponseDTO getCreditStudyResponse(CreditRequestDTO request) {
         return rules.stream()
                 .filter(rule -> rule.appliesTo(request))
-                .findFirst()
                 .map(rule -> rule.evaluate(request))
+                .min(Comparator.comparing(CreditResponseDTO::creditApproved)
+                        .thenComparing(CreditResponseDTO::riskLevel))
                 .orElseGet(() -> defaultApproval(request));
     }
 
