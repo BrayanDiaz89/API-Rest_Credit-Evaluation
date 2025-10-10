@@ -48,7 +48,7 @@ El motor de análisis crediticio aplica las siguientes **reglas inteligentes**, 
 👉 **El sistema de decisión garantiza que:**  
 - Se apliquen todas las reglas de forma automática (inyectadas con Spring).  
 - Las reglas **negativas (riesgo alto o rechazo)** tengan prioridad sobre las aprobaciones.  
-- La arquitectura sea **abierta a la extensión**,
+- La arquitectura sea **abierta a la extensión, cerrada a la modificación.**
 
 ---
 
