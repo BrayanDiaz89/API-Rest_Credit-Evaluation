@@ -123,8 +123,6 @@ El motor de evaluación sigue el siguiente flujo:
 
 ---
 
----
-
 ## 🌟 Posibles mejoras futuras
 
 ✅ Implementar **persistencia** con PostgreSQL  
