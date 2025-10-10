@@ -63,7 +63,7 @@ El motor de evaluación sigue el siguiente flujo:
    .min(Comparator.comparing(CreditResponseDTO::creditApproved)
        .thenComparing(CreditResponseDTO::riskLevel))
 4. ✅​ Devuelve la decisión final o una aprobación por defecto.
-5. 
+   
 ## 🧰 Tecnologías utilizadas
 
 | Tecnología | Uso principal |
