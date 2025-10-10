@@ -32,17 +32,21 @@ Cada regla implementa una interfaz común y puede añadirse o eliminarse sin afe
 
 ## ⚖️ Reglas de negocio
 
-El motor actualmente evalúa las siguientes reglas:
+El motor de análisis crediticio aplica las siguientes **reglas inteligentes**, priorizando los **rechazos o riesgos altos** antes que las aprobaciones seguras ✅🚫  
 
-| Regla | Descripción | Resultado posible |
-|--------|--------------|------------------|
-| 💰 `IncomeRule` | Evalúa si el solicitante tiene ingresos suficientes según el monto solicitado. | Aprobación o rechazo |
-| 🧾 `DebtRule` | Verifica si el nivel de endeudamiento actual supera el límite permitido. | Rechazo si el porcentaje es alto |
-| 📉 `CreditHistoryRule` | Analiza el historial crediticio del solicitante. | Riesgo alto si tiene atrasos o deudas |
-| 🧓 `AgeRule` | Rechaza solicitudes fuera del rango permitido (por ejemplo, menores de edad). | Rechazo directo |
-| 📊 `EmploymentRule` | Considera la estabilidad laboral y el tipo de contrato. | Riesgo bajo si es estable |
+| 🧩 Regla | 🧠 Descripción | 🎯 Condición principal | 🧾 Resultado |
+|-----------|----------------|------------------------|--------------|
+| 🧓 **Edad mínima para crédito** | Rechaza solicitudes de menores de 21 años (excepto créditos educativos). | `edad < 21 y tipo ≠ EDUCATIONAL_LOAN` | ❌ Rechazo directo por edad insuficiente. |
+| 🎓 **Créditos educativos para menores** | Permite créditos educativos a menores de 21 años, pero exige un codeudor. | `edad < 21 y tipo = EDUCATIONAL_LOAN` | ⚠️ Riesgo alto — requiere codeudor. |
+| 📉 **Historial crediticio deficiente** | Si el puntaje crediticio es inferior a 500, el crédito se rechaza automáticamente. | `puntaje_credito < 500` | ❌ Rechazo por historial crediticio insuficiente. |
+| 📊 **Historial crediticio intermedio** | Si el puntaje está entre 500 y 700, se aprueba el crédito con condiciones limitadas. | `500 ≤ puntaje_credito < 700` | ⚠️ Riesgo medio — crédito aprobado con restricciones. |
+| 💸 **Monto de préstamo desproporcionado** | Rechaza solicitudes en las que el monto solicitado supera 10 veces el ingreso mensual. | `monto_solicitado > ingreso × 10` | ❌ Rechazo por monto no acorde al ingreso. |
+| 🏠 **Plazo no realista para hipoteca** | Detecta plazos demasiado cortos para créditos hipotecarios y los rechaza. | `tipo = MORTGAGE_LOAN y plazo < 60 meses` | ❌ Rechazo por plazo no viable. |
 
-👉 El sistema prioriza las **reglas negativas** (rechazos) antes de las positivas, garantizando decisiones seguras.
+👉 **El sistema de decisión garantiza que:**  
+- Se apliquen todas las reglas de forma automática (inyectadas con Spring).  
+- Las reglas **negativas (riesgo alto o rechazo)** tengan prioridad sobre las aprobaciones.  
+- La arquitectura sea **abierta a la extensión**,
 
 ---
 
