@@ -28,6 +28,7 @@ Cada regla implementa una interfaz común y puede añadirse o eliminarse sin afe
 | `CreditRisk` | Enum que clasifica el riesgo del solicitante: `HIGH_RISK`, `MEDIUM_RISK`, `LOW_RISK` |
 | `CreditEngine` | Clase que evalúa todas las reglas y determina el resultado final |
 | `CreditAnalysisService` | Clase que recibe las reglas de negocio en una lista, y las trata con Streams, para dar respuesta al controller |
+| `CreditController` | Clase controller que remite la respuesta acertada al cliente, teniendo en cuenta las validaciones del servicio |
 
 ---
 
