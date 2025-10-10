@@ -3,6 +3,7 @@ package com.brayan.CrediScore_API.service.rules;
 import com.brayan.CrediScore_API.model.dto.CreditRequestDTO;
 import com.brayan.CrediScore_API.model.dto.CreditResponseDTO;
 import com.brayan.CrediScore_API.model.enums.CreditRisk;
+import com.brayan.CrediScore_API.model.enums.TypeOfLoan;
 import com.brayan.CrediScore_API.util.CreditMaxEligibleAmount;
 import com.brayan.CrediScore_API.util.CreditRecomendationUtil;
 import org.springframework.stereotype.Component;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Under21Rule implements ICreditRule {
     public boolean appliesTo(CreditRequestDTO request) {
-        return request.age() < 21;
+        return (request.typeOfLoan() != TypeOfLoan.EDUCATIONAL_LOAN) && (request.age() < 21);
     }
 
     public CreditResponseDTO evaluate(CreditRequestDTO request) {
